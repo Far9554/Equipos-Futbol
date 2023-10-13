@@ -10,6 +10,7 @@ namespace Equipos_Futbol
     {
         static List<Equipo> Equipos = new List<Equipo>();
         static List<Jugador> Jugadores = new List<Jugador>();
+        static List<Club> Clubs = new List<Club>();
 
         static void Main(string[] args)
         {
@@ -49,8 +50,10 @@ namespace Equipos_Futbol
                     SelectorEquipo().MostrarJugadores();
                     break;
                 case 6:
+                    CrearClub();
                     break;
                 case 7:
+                    SelectorClub().Equipos.Add(SelectorEquipo());
                     break;
                 default:
                     return;
@@ -61,9 +64,7 @@ namespace Equipos_Futbol
         {
             Console.WriteLine("-- EQUIPOS --");
             for (int i = 0; i < Equipos.Count; i++)
-            {
                 Console.WriteLine(i + Equipos[i].NombreEquipo);
-            }
 
             Console.Write("Introduce numero Equipo: ");
             int id = Int32.Parse(Console.ReadLine());
@@ -74,13 +75,22 @@ namespace Equipos_Futbol
         {
             Console.WriteLine("-- JUGADORES --");
             for (int i = 0; i < Jugadores.Count; i++)
-            {
                 Console.WriteLine(i + Jugadores[i].Nombre);
-            }
 
-            Console.Write("Introduce numero jugador: ");
+            Console.Write("Introduce numero Jugador: ");
             int id = Int32.Parse(Console.ReadLine());
             return Jugadores[id];
+        }
+
+        static Club SelectorClub()
+        {
+            Console.WriteLine("-- CLUBS --");
+            for (int i = 0; i < Clubs.Count; i++)
+                Console.WriteLine(i + Clubs[i].Nombre);
+
+            Console.Write("Introduce numero Club: ");
+            int id = Int32.Parse(Console.ReadLine());
+            return Clubs[id];
         }
 
         static void CrearJugador()
@@ -111,6 +121,15 @@ namespace Equipos_Futbol
             string n = Console.ReadLine();
 
             Equipos.Add(new Equipo(n));
+        }
+
+        static void CrearClub()
+        {
+            Console.WriteLine("--Crear Club--");
+            Console.Write("Nombre Club: ");
+            string n = Console.ReadLine();
+
+            Clubs.Add(new Club(n));
         }
     }
 }
