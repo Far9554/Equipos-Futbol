@@ -36,5 +36,10 @@ namespace Equipos_Futbol
             this.fechaNacimiento = fechaNacimiento;
             this.nacionalidad = nacionalidad;
         }
+
+        public override string ToString()
+        {
+            return "Jugador { nombre = " + nombre + ", apellidos = " + apellidos + ", posicion = " + posicion + ", fechaNacimiento = " + fechaNacimiento + ", nacionalidad = " + nacionalidad + " }";
+        }
     }
 }

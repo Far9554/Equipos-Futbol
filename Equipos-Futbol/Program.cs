@@ -11,6 +11,7 @@ namespace Equipos_Futbol
         static List<Equipo> Equipos = new List<Equipo>();
         static List<Jugador> Jugadores = new List<Jugador>();
         static List<Club> Clubs = new List<Club>();
+        static List<Partido> Partidos = new List<Partido>();
 
         static void Main(string[] args)
         {
@@ -24,6 +25,8 @@ namespace Equipos_Futbol
                 Console.WriteLine("5 - Mostrar Jugadores Equipo");
                 Console.WriteLine("6 - Crear Club");
                 Console.WriteLine("7 - Añadir Equipo a Club");
+                Console.WriteLine("8 - Añadir partido");
+                Console.WriteLine("9 - Mostrar partidos");
 
                 SeleccionarFuncion(Int32.Parse(Console.ReadLine()));
             }
@@ -40,7 +43,10 @@ namespace Equipos_Futbol
                     CrearEquipo();
                     break;
                 case 3:
-                    SelectorEquipo().Jugadores.Add(SelectorJugador());
+                    Equipo equipo = SelectorEquipo();
+                    Jugador jugador = SelectorJugador();
+                    jugador.NombreEquipo = equipo.NombreEquipo;
+                    equipo.Jugadores.Add(jugador);
                     break;
                 case 4:
                     Equipo e = SelectorEquipo();
@@ -54,6 +60,12 @@ namespace Equipos_Futbol
                     break;
                 case 7:
                     SelectorClub().Equipos.Add(SelectorEquipo());
+                    break;
+                case 8:
+                    CrearPartido();
+                    break;
+                case 9:
+                    MostrarPartidos();
                     break;
                 default:
                     return;
@@ -75,7 +87,10 @@ namespace Equipos_Futbol
         {
             Console.WriteLine("-- JUGADORES --");
             for (int i = 0; i < Jugadores.Count; i++)
-                Console.WriteLine(i + "- " + Jugadores[i].Nombre);
+            {
+                if (Jugadores[i].NombreEquipo == null)
+                    Console.WriteLine(i + "- " + Jugadores[i].Nombre);
+            }
 
             Console.Write("Introduce numero Jugador: ");
             int id = Int32.Parse(Console.ReadLine());
@@ -130,6 +145,63 @@ namespace Equipos_Futbol
             string n = Console.ReadLine();
 
             Clubs.Add(new Club(n));
+        }
+
+        static void CrearPartido()
+        {
+            List<Equipo> equipos = new List<Equipo>(Equipos);
+            Equipo equipo1 = SelectorEquipoPartidos(equipos);
+            equipos.Remove(equipo1);
+            Equipo equipo2 = SelectorEquipoPartidos(equipos);
+
+            Console.WriteLine("Generar resultado? (si o no)");
+            string respuesta = Console.ReadLine();
+
+            Partido partido = null;
+            
+            if (respuesta == "si")
+            {
+                partido = new Partido(equipo1, equipo2);
+                partido.GenerarResultado();
+            }
+            else
+            {
+                Console.WriteLine("Introduce los goles del equipo 1:");
+                string strGolesEquipo1 = Console.ReadLine();
+                int golesEquipo1 = int.Parse(strGolesEquipo1);
+
+                Console.WriteLine("Introduce los goles del equipo 2:");
+                string strGolesEquipo2 = Console.ReadLine();
+                int golesEquipo2 = int.Parse(strGolesEquipo2);
+
+                partido = new Partido(equipo1, equipo2, golesEquipo1, golesEquipo2);
+            }
+            Partidos.Add(partido);
+        }
+
+        static Equipo SelectorEquipoPartidos(List<Equipo> equipos)
+        {
+            Console.WriteLine("-- EQUIPOS --");
+            for (int i = 0; i < equipos.Count; i++)
+                Console.WriteLine(i + "- " + equipos[i].NombreEquipo);
+
+            Console.Write("Introduce numero Equipo: ");
+            int id = Int32.Parse(Console.ReadLine());
+            return equipos[id];
+        }
+
+        static void MostrarPartidos()
+        {
+            if (Partidos.Count == 0)
+                Console.WriteLine("No hay partidos");
+            else
+            {
+                foreach (Partido partido in Partidos)
+                    Console.WriteLine(partido.ObtenerResultado() + "\n");
+            }
+
+            Console.WriteLine("Pulsa una tecla para continuar");
+            Console.ReadKey();
         }
     }
 }
