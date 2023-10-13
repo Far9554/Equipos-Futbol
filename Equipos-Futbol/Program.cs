@@ -32,6 +32,7 @@ namespace Equipos_Futbol
             switch (Opcion)
             {
                 case 1:
+                    CrearJugador();
                     break;
                 case 2:
                     break;
@@ -50,15 +51,36 @@ namespace Equipos_Futbol
 
         public Equipo SelectorEquipo()
         {
-            Console.WriteLine("-- MEDICOS --");
+            Console.WriteLine("-- EQUIPOS --");
             for (int i = 0; i < Equipos.Count; i++)
             {
                 Console.WriteLine(i + " - Dr. " + Equipos[i].NombreEquipo);
             }
 
-            Console.Write("Introduce numero Medico: ");
+            Console.Write("Introduce numero Equipo: ");
             int id = Int32.Parse(Console.ReadLine());
             return Equipos[id];
+        }
+
+        static void CrearJugador()
+        {
+            Console.WriteLine("Nombre:");
+            string nombre = Console.ReadLine();
+
+            Console.WriteLine("Apellidos:");
+            string apellidos = Console.ReadLine();
+
+            Console.WriteLine("Posición:");
+            string posicion = Console.ReadLine();
+
+            Console.WriteLine("Fecha nacimiento (dd/mm/yyyy):");
+            string fechaNacimiento = Console.ReadLine();
+
+            Console.WriteLine("Nacionalidad:");
+            string nacionalidad = Console.ReadLine();
+
+            Jugadores.Add(new Jugador(nombre, apellidos, posicion, fechaNacimiento, nacionalidad));
+            Console.WriteLine("Jugador creado correctamente!");
         }
     }
 }
