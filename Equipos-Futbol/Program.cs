@@ -35,10 +35,13 @@ namespace Equipos_Futbol
                     CrearJugador();
                     break;
                 case 2:
+                    CrearEquipo();
                     break;
                 case 3:
+                    SelectorEquipo().Jugadores.Add(SelectorJugador());
                     break;
                 case 4:
+                    SelectorEquipo().MostrarJugadores();
                     break;
                 case 5:
                     break;
@@ -49,17 +52,30 @@ namespace Equipos_Futbol
             }
         }
 
-        public Equipo SelectorEquipo()
+        static Equipo SelectorEquipo()
         {
             Console.WriteLine("-- EQUIPOS --");
             for (int i = 0; i < Equipos.Count; i++)
             {
-                Console.WriteLine(i + " - Dr. " + Equipos[i].NombreEquipo);
+                Console.WriteLine(i + Equipos[i].NombreEquipo);
             }
 
             Console.Write("Introduce numero Equipo: ");
             int id = Int32.Parse(Console.ReadLine());
             return Equipos[id];
+        }
+
+        static Jugador SelectorJugador()
+        {
+            Console.WriteLine("-- JUGADORES --");
+            for (int i = 0; i < Jugadores.Count; i++)
+            {
+                Console.WriteLine(i + Jugadores[i].Nombre);
+            }
+
+            Console.Write("Introduce numero jugador: ");
+            int id = Int32.Parse(Console.ReadLine());
+            return Jugadores[id];
         }
 
         static void CrearJugador()
@@ -81,6 +97,15 @@ namespace Equipos_Futbol
 
             Jugadores.Add(new Jugador(nombre, apellidos, posicion, fechaNacimiento, nacionalidad));
             Console.WriteLine("Jugador creado correctamente!");
+        }
+
+        static void CrearEquipo()
+        {
+            Console.WriteLine("--Crear Equipo--");
+            Console.Write("Nombre Equipo: ");
+            string n = Console.ReadLine();
+
+            Equipos.Add(new Equipo(n));
         }
     }
 }
