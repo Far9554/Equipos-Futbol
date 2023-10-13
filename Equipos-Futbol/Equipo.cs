@@ -6,11 +6,7 @@ using System.Threading.Tasks;
 
 namespace Equipos_Futbol
 {
-    internal class Program
+    internal class Equipo
     {
-        static void Main(string[] args)
-        {
-
-        }
     }
 }
