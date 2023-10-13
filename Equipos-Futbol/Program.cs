@@ -47,5 +47,18 @@ namespace Equipos_Futbol
                     return;
             }
         }
+
+        public Equipo SelectorEquipo()
+        {
+            Console.WriteLine("-- MEDICOS --");
+            for (int i = 0; i < Equipos.Count; i++)
+            {
+                Console.WriteLine(i + " - Dr. " + Equipos[i].NombreEquipo);
+            }
+
+            Console.Write("Introduce numero Medico: ");
+            int id = Int32.Parse(Console.ReadLine());
+            return Equipos[id];
+        }
     }
 }

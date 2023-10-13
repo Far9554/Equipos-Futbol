@@ -8,19 +8,20 @@ namespace Equipos_Futbol
 {
     internal class Equipo
     {
-        private string NombreEquipo;
+        private string nombreEquipo;
         private List<Jugador> jugadorList = new List<Jugador>();
 
+        public string NombreEquipo { get { return nombreEquipo; } set {  nombreEquipo = value; } }
         public List<Jugador> Jugadores { get { return jugadorList; } set { jugadorList = value; } }
 
-        public Equipo(string xNombre) { NombreEquipo = xNombre; }
+        public Equipo(string xNombre) { nombreEquipo = xNombre; }
 
         public void MostrarJugadores()
         {
-            Console.WriteLine("-- " + NombreEquipo + " --");
+            Console.WriteLine("-- " + nombreEquipo + " --");
             foreach(Jugador j in  jugadorList)
             {
-
+                Console.WriteLine(j.Nombre);
             }
         }
     }
