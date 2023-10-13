@@ -10,17 +10,13 @@ namespace Equipos_Futbol
     {
         private string nombre;
         private string apellidos;
-        private int edad;
         private string posicion;
         private string fechaNacimiento;
         private string nacionalidad;
-        private string lugarNacimiento;
-        private int alturaCms;
+        private string nombreEquipo;
 
         public string Nombre { get { return nombre; } set { nombre = value; } }
         public string Apellidos { get {  return apellidos; } set {  apellidos = value; } }
-
-        public int Edad { get { return edad; } set { edad = value; } }
 
         public string Posicion { get {  return posicion; } set {  posicion = value; } }
 
@@ -28,22 +24,17 @@ namespace Equipos_Futbol
 
         public string Nacionalidad { get { return nacionalidad; } set { nacionalidad = value; } }
 
-        public string LugarNacimiento { get { return lugarNacimiento; } set { lugarNacimiento = value; } }
-
-        public int AlturaCms { get { return alturaCms; } set { alturaCms = value; } }
+        public string NombreEquipo { get { return nombreEquipo; } set { nombreEquipo = value; } }
 
         public Jugador() { }
 
-        public Jugador(string nombre, string apellidos, int edad, string posicion, string fechaNacimiento, string nacionalidad, string lugarNacimiento, int alturaCms)
+        public Jugador(string nombre, string apellidos, string posicion, string fechaNacimiento, string nacionalidad)
         {
             this.nombre = nombre;
             this.apellidos = apellidos;
-            this.edad = edad;
             this.posicion = posicion;
             this.fechaNacimiento = fechaNacimiento;
             this.nacionalidad = nacionalidad;
-            this.lugarNacimiento = lugarNacimiento;
-            this.alturaCms = alturaCms;
         }
     }
 }
