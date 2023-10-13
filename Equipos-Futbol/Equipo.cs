@@ -17,14 +17,6 @@ namespace Equipos_Futbol
 
         public Equipo(string xNombre) { nombreEquipo = xNombre; }
 
-
-        
-
-        public void AgregarJugador(Jugador j) 
-        { 
-            jugadorList.Add(j); 
-        }
-
         public void MostrarJugadores()
         {
             Console.WriteLine("-- " + nombreEquipo + " --");
@@ -32,6 +24,18 @@ namespace Equipos_Futbol
             {
                 Console.WriteLine(j.Nombre);
             }
+        }
+        public Jugador SelectorJugadorEquipo()
+        {
+            Console.WriteLine("-- JUGADORES --");
+            for (int i = 0; i < Jugadores.Count; i++)
+            {
+                Console.WriteLine(i + Jugadores[i].Nombre);
+            }
+
+            Console.Write("Introduce numero jugador: ");
+            int id = Int32.Parse(Console.ReadLine());
+            return Jugadores[id];
         }
     }
 }

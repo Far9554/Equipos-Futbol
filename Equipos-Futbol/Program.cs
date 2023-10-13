@@ -19,9 +19,10 @@ namespace Equipos_Futbol
                 Console.WriteLine("1 - Dar de alta a jugador");
                 Console.WriteLine("2 - Dar de alta a equipo");
                 Console.WriteLine("3 - Agregar jugador a equipo");
-                Console.WriteLine("4 - Mostrar Jugadores Equipo");
-                Console.WriteLine("5 - Mostrar todos los jugadores y su equipo");
-                Console.WriteLine("6 - Mostrar Informacion General");
+                Console.WriteLine("4 - Eliminar jugador de equipo");
+                Console.WriteLine("5 - Mostrar Jugadores Equipo");
+                Console.WriteLine("6 - Crear Club");
+                Console.WriteLine("7 - Añadir Equipo a Club");
 
                 SeleccionarFuncion(Int32.Parse(Console.ReadLine()));
             }
@@ -41,11 +42,15 @@ namespace Equipos_Futbol
                     SelectorEquipo().Jugadores.Add(SelectorJugador());
                     break;
                 case 4:
-                    SelectorEquipo().MostrarJugadores();
+                    Equipo e = SelectorEquipo();
+                    e.Jugadores.Remove(e.SelectorJugadorEquipo());
                     break;
                 case 5:
+                    SelectorEquipo().MostrarJugadores();
                     break;
                 case 6:
+                    break;
+                case 7:
                     break;
                 default:
                     return;
