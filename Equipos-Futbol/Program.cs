@@ -64,7 +64,7 @@ namespace Equipos_Futbol
         {
             Console.WriteLine("-- EQUIPOS --");
             for (int i = 0; i < Equipos.Count; i++)
-                Console.WriteLine(i + Equipos[i].NombreEquipo);
+                Console.WriteLine(i + "- " + Equipos[i].NombreEquipo);
 
             Console.Write("Introduce numero Equipo: ");
             int id = Int32.Parse(Console.ReadLine());
@@ -75,7 +75,7 @@ namespace Equipos_Futbol
         {
             Console.WriteLine("-- JUGADORES --");
             for (int i = 0; i < Jugadores.Count; i++)
-                Console.WriteLine(i + Jugadores[i].Nombre);
+                Console.WriteLine(i + "- " + Jugadores[i].Nombre);
 
             Console.Write("Introduce numero Jugador: ");
             int id = Int32.Parse(Console.ReadLine());
@@ -86,7 +86,7 @@ namespace Equipos_Futbol
         {
             Console.WriteLine("-- CLUBS --");
             for (int i = 0; i < Clubs.Count; i++)
-                Console.WriteLine(i + Clubs[i].Nombre);
+                Console.WriteLine(i + "- " + Clubs[i].Nombre);
 
             Console.Write("Introduce numero Club: ");
             int id = Int32.Parse(Console.ReadLine());

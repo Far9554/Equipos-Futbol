@@ -21,9 +21,9 @@ namespace Equipos_Futbol
         {
             Console.WriteLine("-- " + nombreEquipo + " --");
             foreach(Jugador j in  jugadorList)
-            {
                 Console.WriteLine(j.Nombre);
-            }
+
+            Console.ReadLine();
         }
         public Jugador SelectorJugadorEquipo()
         {
